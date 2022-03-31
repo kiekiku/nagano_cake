@@ -1,19 +1,43 @@
 Rails.application.routes.draw do
-  get 'cart_items/index'
+  namespace :admin do
+    resources :orders
+  end
 
-  get 'customers/show'
+  namespace :admin do
+    resources :customers
+  end
 
-  get 'customers/edit'
+  namespace :admin do
+    resources :genres
+  end
 
-  get 'sessions/new'
+  namespace :admin do
+    resources :items
+  end
 
-  get 'registrations/new'
+  namespace :admin do
+    get 'homes/top'
+  end
 
-  get 'items/index'
+  namespace :admin do
+    resources :sessions
+  end
 
-  get 'items/show'
+  resources :addresses
 
-  get 'homes/top'
+  resources :orders
+
+  resources :cart_items
+
+  resources :customers
+
+  resources :sessions
+
+  resources :registrations
+
+  resources :items
+
+  root to: 'home#top'
 
   get 'homes/about'
 
