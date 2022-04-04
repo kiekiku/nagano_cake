@@ -1,27 +1,15 @@
 Rails.application.routes.draw do
+  root to: 'public/homes#top'
   namespace :admin do
     resources :orders
-  end
-
-  namespace :admin do
     resources :customers
-  end
-
-  namespace :admin do
     resources :genres
-  end
-
-  namespace :admin do
     resources :items
-  end
-
-  namespace :admin do
-    get 'homes/top'
-  end
-
-  namespace :admin do
     resources :sessions
   end
+
+
+scope module: :public do
 
   resources :addresses
 
@@ -31,15 +19,10 @@ Rails.application.routes.draw do
 
   resources :customers
 
-  resources :sessions
-
-  resources :registrations
-
   resources :items
 
-  root to: 'home#top'
-
-  get 'homes/about'
+  resources :homes
+end
 
   devise_for :admins
   devise_for :customers
